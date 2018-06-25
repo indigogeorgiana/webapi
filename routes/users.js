@@ -35,4 +35,16 @@ router.post('/', (req, res) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
+
+router.put('/', (req, res) => {
+  const updatedUser = req.body
+  db.updateUser(updatedUser)
+    .then(user => {
+      res.status(200).end()
+    })
+    .catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
 module.exports = router
